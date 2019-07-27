@@ -48,6 +48,24 @@ class chat extends Component {
         })
     }
 
+    messageChangeHandler = (event) => {
+        this.setState({
+            message: event.target.value
+        })
+    }
+
+    sendMessageHandler = (e) => {
+        e.preventDefault();
+        const messageObject = {
+            from: "christianbaker",
+            content: this.state.message,
+        };
+        WebSocketInstance.newChatMessage(messageObject);
+        this.setState({
+            message: ''
+        });
+    }
+
     renderMessages = (messages) => {
         const currentUser = 'christianbaker'
         return messages.map(message => (
@@ -55,7 +73,11 @@ class chat extends Component {
                 className={message.author === currentUser ? 'sent' : 'replies'}>
                 <img src='http://emilcarlsson.se/assets/mikeross.png' />
                 <p>
+                    <small>{message.author}</small>
+                    <br />
                     {message.content}
+                    <br />
+                    <small>{Math.round((new Date().getTime() - new Date(message.timestamp).getTime()) / 60000)} minutes ago</small>
                 </p>
             </li>
         ))
@@ -151,13 +173,16 @@ class chat extends Component {
                         </ul>
                     </div>
                     <div className="message-input">
-                        <div className="wrap">
-                            <input id="chat-message-input" type="text" placeholder="Write your message..." />
-                            <i className="fa fa-paperclip attachment" aria-hidden="true"></i>
-                            <button id="chat-message-submit" className="submit">
-                                <i className="fa fa-paper-plane" aria-hidden="true"></i>
-                            </button>
-                        </div>
+                        <form onSubmit={this.sendMessageHandler}>
+                            <div className="wrap">
+                                <input id="chat-message-input" type="text" placeholder="Write your message..." onChange={this.messageChangeHandler} />
+                                <i className="fa fa-paperclip attachment" aria-hidden="true"></i>
+                                <button id="chat-message-submit" className="submit">
+                                    <i className="fa fa-paper-plane" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
