@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import WebSocketInstance from './../../websocket.js'
+import WebSocketInstance from '../../websocket.js'
+import './Chat.css'
 
 class chat extends Component {
 

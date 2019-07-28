@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
-import Nav from './components/Nav/Nav.js';
-import LoginForm from './components/LoginForm/LoginForm.js';
-import SignupForm from './components/SignupForm/SignupForm.js';
-import Chat from './components/Chat/Chat.js'
-import './App.css'
+import Nav from './components/Nav/Nav.js.js'
+import LoginForm from './components/LoginForm/LoginForm.js'
+import SignupForm from './components/SignupForm/SignupForm.js'
 
-
-class App extends Component {
-
+class LoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -83,7 +79,6 @@ class App extends Component {
     };
 
     render() {
-
         let form;
         switch (this.state.displayed_form) {
             case 'login':
@@ -95,9 +90,8 @@ class App extends Component {
             default:
                 form = null;
         }
-
         return (
-            <div className="app" >
+            <React.Fragment>
                 <Nav className='login'
                     logged_in={this.state.logged_in}
                     display_form={this.display_form}
@@ -109,10 +103,10 @@ class App extends Component {
                         ? `Hello, ${this.state.username}`
                         : 'Please Log In'}
                 </h3>
-                {/* <Chat /> */}
-            </div>
-        );
+            </React.Fragment>
+        )
     }
+
 }
 
-export default App;
+export default LoginPage

@@ -1,2 +1,11 @@
-
+.login {
+    margin-top: 0%;
+    margin-right: 0%;
+    padding-top: 0%;
+  }
+  
+  input {
+    display: block;
+    margin: 5px 0 5px;
+  }
 
