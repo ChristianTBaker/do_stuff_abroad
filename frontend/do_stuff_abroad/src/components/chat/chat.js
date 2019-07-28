@@ -73,7 +73,7 @@ class chat extends Component {
                 className={message.author === currentUser ? 'sent' : 'replies'}>
                 <img src='http://emilcarlsson.se/assets/mikeross.png' />
                 <p>
-                    <small>{message.author}</small>
+                    <small>User: {message.author}</small>
                     <br />
                     {message.content}
                     <br />
