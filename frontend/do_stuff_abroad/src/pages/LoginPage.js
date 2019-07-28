@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Nav from './components/Nav/Nav.js.js'
-import LoginForm from './components/LoginForm/LoginForm.js'
-import SignupForm from './components/SignupForm/SignupForm.js'
+import Nav from './../components/Nav/Nav.js'
+import LoginForm from './../components/LoginForm/LoginForm.js'
+import SignupForm from './../components/SignupForm/SignupForm.js'
 
 class LoginPage extends Component {
     constructor(props) {
