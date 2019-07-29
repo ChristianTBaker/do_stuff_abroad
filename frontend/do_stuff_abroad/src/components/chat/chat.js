@@ -58,7 +58,7 @@ class chat extends Component {
     sendMessageHandler = (e) => {
         e.preventDefault();
         const messageObject = {
-            from: "christianbaker",
+            from: this.props.username,
             content: this.state.message,
         };
         WebSocketInstance.newChatMessage(messageObject);
@@ -68,7 +68,7 @@ class chat extends Component {
     }
 
     renderMessages = (messages) => {
-        const currentUser = 'christianbaker'
+        const currentUser = this.props.username
         return messages.map(message => (
             <li key={message.id}
                 className={message.author === currentUser ? 'sent' : 'replies'}>
@@ -158,7 +158,7 @@ class chat extends Component {
                 <div className="content">
                     <div className="contact-profile">
                         <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                        <p>username</p>
+                        <p>{this.props.username}</p>
                         <div className="social-media">
                             <i className="fa fa-facebook" aria-hidden="true"></i>
                             <i className="fa fa-twitter" aria-hidden="true"></i>
@@ -183,7 +183,6 @@ class chat extends Component {
                                 </button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>

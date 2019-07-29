@@ -6,12 +6,10 @@ const reducer = (state, action) => {
     switch (action.type) {
         case 'CLEAR_USERNAME':
             return {
-                ...state,
                 username: ''
             }
         case 'SET_USERNAME':
             return {
-                ...state,
                 username: action.payload
             }
         default:
@@ -21,8 +19,9 @@ const reducer = (state, action) => {
 
 export class Provider extends Component {
     state = {
-        username: '',
-        dispatch: action => this.setState(state => reducer(state, action))
+        username: 'Not Logged In',
+        dispatch: action => { this.setState(state => reducer(state, action)) }
+
     }
 
     render() {
