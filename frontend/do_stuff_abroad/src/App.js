@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage.js'
 import './App.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import { Provider } from './context'
 
 class App extends Component {
     render() {

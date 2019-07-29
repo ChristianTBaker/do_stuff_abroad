@@ -1,0 +1,1 @@
+export default ['Nightlife', 'Sightseeing', 'Outdoors', 'Other']

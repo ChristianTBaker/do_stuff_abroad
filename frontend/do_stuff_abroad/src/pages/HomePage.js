@@ -3,6 +3,7 @@ import Nav from './../components/Nav/Nav.js'
 import Chat from './../components/Chat/Chat.js'
 import LoginForm from './../components/LoginForm/LoginForm.js'
 import SignupForm from './../components/SignupForm/SignupForm.js'
+import ChatPicker from './../components/ChatPicker/ChatPicker.js'
 
 
 class HomePage extends Component {
@@ -105,8 +106,8 @@ class HomePage extends Component {
                         ? `Hello, ${this.state.username}`
                         : 'Please Log In'}
                 </h3>
-                {this.state.username ? <Chat username={this.state.username} /> : null}
-
+                {this.state.username ? <ChatPicker username={this.state.username} /> : null}
+                {/* {this.state.username ? <Chat username={this.state.username} /> : null} */}
             </div>
         )
     }
