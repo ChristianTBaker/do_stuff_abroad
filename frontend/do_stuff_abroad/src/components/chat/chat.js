@@ -5,7 +5,7 @@ import './Chat.css'
 class chat extends Component {
 
     componentDidMount() {
-        WebSocketInstance.connect();
+        WebSocketInstance.connect(this.props.city, this.props.activity);
     }
 
 

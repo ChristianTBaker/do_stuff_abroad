@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import locations from '../../static/loactions.js'
 import activities from '../../static/activities.js'
 import { send_city_and_activity } from './../../api/api.js'
+import Chat from './../Chat/Chat.js'
 
 class ChatPicker extends Component {
     state = {
@@ -9,6 +10,7 @@ class ChatPicker extends Component {
         country: '',
         city: '',
         activity: '',
+        show_chat: false
     }
 
     onChange = e => {
@@ -35,7 +37,9 @@ class ChatPicker extends Component {
     }
 
     send_selections = () => {
-        send_city_and_activity(this.state.city, this.state.activity, this.props.username)
+        this.setState({
+            show_chat: true
+        })
     }
 
     render() {
@@ -50,27 +54,30 @@ class ChatPicker extends Component {
         activities.forEach(element => {
             activity_select.push(<option value={element}>{element}</option>)
         })
+        const { continent, country, city, activity, show_chat } = this.state
         return (
             <div>
                 <select name='continent' onChange={this.onChange}>
                     {continent_select}
                 </select>
-                {this.state.continent ?
+                {continent ?
                     <select name='country' onChange={this.onChange}>
-                        {this.select_next(locations, this.state.continent)}
+                        {this.select_next(locations, continent)}
                     </select>
                     : null}
-                {this.state.country ?
+                {country ?
                     <select name='city' onChange={this.onChange}>
-                        {this.select_next(locations[this.state.continent], this.state.country)}
+                        {this.select_next(locations[continent], country)}
                     </select>
                     : null}
-                {this.state.city ?
+                {city ?
                     <select name='activity' onChange={this.onChange}>
                         {activity_select}
                     </select>
                     : null}
-                {this.state.activity ? <button onClick={this.send_selections}>Submit</button> : null}
+                {activity ? <button onClick={this.send_selections}>Submit</button> : null}
+                {show_chat ? <Chat username={this.props.username} city={city} activity={activity} /> : null}
+
             </div>
         )
     }
