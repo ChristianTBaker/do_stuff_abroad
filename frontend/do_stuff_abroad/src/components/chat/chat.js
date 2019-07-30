@@ -157,8 +157,7 @@ class chat extends Component {
                 </div>
                 <div className="content">
                     <div className="contact-profile">
-                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                        <p>{this.props.username}</p>
+                        <p className='indent'>Room: {this.props.city} - {this.props.activity}</p>
                         <div className="social-media">
                             <i className="fa fa-facebook" aria-hidden="true"></i>
                             <i className="fa fa-twitter" aria-hidden="true"></i>

@@ -672,3 +672,7 @@ body {
   .fa {
     font-size: 1.5em !important;
   }
+
+  p.indent {
+    padding-left: 2em;
+  }

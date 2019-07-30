@@ -14,9 +14,12 @@ class ChatPicker extends Component {
     }
 
     onChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        let value = e.target.value
+        if (value !== 'Please Select an Option' && value !== 'Please Select a Loaction') {
+            this.setState({
+                [e.target.name]: value
+            })
+        }
     }
 
     select_next = (object, key) => {
@@ -45,7 +48,7 @@ class ChatPicker extends Component {
     render() {
         var continents = []
         var continent_select = []
-        var activity_select = ['Please Select an Activity']
+        var activity_select = []
         continents = Object.keys(locations)
         continents.unshift('Please Select a Loaction')
         continents.forEach(element => {
@@ -54,6 +57,7 @@ class ChatPicker extends Component {
         activities.forEach(element => {
             activity_select.push(<option value={element}>{element}</option>)
         })
+        activity_select.unshift(<option value={'Please Select an Option'}>Please Select an Option</option>)
         const { continent, country, city, activity, show_chat } = this.state
         return (
             <div>
