@@ -4,6 +4,7 @@ import Chat from './../components/Chat/Chat.js'
 import LoginForm from './../components/LoginForm/LoginForm.js'
 import SignupForm from './../components/SignupForm/SignupForm.js'
 import ChatPicker from './../components/ChatPicker/ChatPicker.js'
+import { jsxOpeningFragment } from '@babel/types';
 
 
 class HomePage extends Component {
@@ -12,7 +13,8 @@ class HomePage extends Component {
         this.state = {
             displayed_form: '',
             logged_in: localStorage.getItem('token') ? true : false,
-            username: ''
+            username: '',
+            id: ''
         };
     }
 
@@ -45,7 +47,8 @@ class HomePage extends Component {
                 this.setState({
                     logged_in: true,
                     displayed_form: '',
-                    username: json.user.username
+                    username: json.user.username,
+                    user_id: json.user.id
                 });
             });
     };
@@ -55,7 +58,8 @@ class HomePage extends Component {
         fetch('http://localhost:8000/core/users/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(data)
         })
@@ -65,7 +69,8 @@ class HomePage extends Component {
                 this.setState({
                     logged_in: true,
                     displayed_form: '',
-                    username: json.username
+                    username: json.username,
+                    user_id: json.user.id
                 });
             });
     };
@@ -107,7 +112,6 @@ class HomePage extends Component {
                         : 'Please Log In'}
                 </h3>
                 {this.state.username ? <ChatPicker username={this.state.username} /> : null}
-                {/* {this.state.username ? <Chat username={this.state.username} /> : null} */}
             </div>
         )
     }
