@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Nav from './../components/Nav/Nav.js'
-import Chat from './../components/Chat/Chat.js'
 import LoginForm from './../components/LoginForm/LoginForm.js'
 import SignupForm from './../components/SignupForm/SignupForm.js'
 import ChatPicker from './../components/ChatPicker/ChatPicker.js'
+import Profile from './../components/Profile/Profile.js'
 import { jsxOpeningFragment } from '@babel/types';
 
 
@@ -111,6 +111,8 @@ class HomePage extends Component {
                         ? `Hello, ${this.state.username}`
                         : 'Please Log In'}
                 </h3>
+                {this.state.username ? <Profile username={this.state.username} user_id={this.state.user_id
+                } /> : null}
                 {this.state.username ? <ChatPicker username={this.state.username} /> : null}
             </div>
         )
