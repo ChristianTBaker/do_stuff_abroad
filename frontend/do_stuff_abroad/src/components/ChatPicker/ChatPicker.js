@@ -80,7 +80,6 @@ class ChatPicker extends Component {
                     : null}
                 {activity ? <button onClick={this.send_selections}>Submit</button> : null}
                 {show_chat ? <Chat username={this.props.username} city={city} activity={activity} /> : null}
-
             </div>
         )
     }

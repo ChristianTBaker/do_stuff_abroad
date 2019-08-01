@@ -6,7 +6,8 @@ import Weather from './../Weather/Weather.js'
 class chat extends Component {
 
     componentDidMount() {
-        WebSocketInstance.connect(this.props.city, this.props.activity);
+        WebSocketInstance.connect(this.props.city, this.props.activity)
+        this.scrollToBottom()
     }
 
 
@@ -70,21 +71,45 @@ class chat extends Component {
         });
     }
 
+    renderTimestamp = timestamp => {
+        let prefix = ''
+        const timeDiff = Math.round((new Date().getTime() - new Date(timestamp).getTime()) / 60000)
+        if (timeDiff < 60 && timeDiff > 1) {
+            prefix = `${timeDiff} minutes age`
+        } else if (timeDiff < 24 * 60 && timeDiff > 60) {
+            prefix = `${Math.round(timeDiff / 60)} hours ago`
+        } else if (timeDiff < 31 * 24 * 60 && timeDiff > 24 * 60) {
+            prefix = `${Math.round(timeDiff / (60 * 24))} days ago`
+        } else {
+            prefix = `${new Date(timestamp)}`
+        }
+        return prefix
+    }
+
     renderMessages = (messages) => {
         const currentUser = this.props.username
         return messages.map(message => (
             <li key={message.id}
                 className={message.author === currentUser ? 'sent' : 'replies'}>
-                <img src='http://emilcarlsson.se/assets/mikeross.png' />
                 <p>
                     <small>User: {message.author}</small>
                     <br />
                     {message.content}
                     <br />
-                    <small>{Math.round((new Date().getTime() - new Date(message.timestamp).getTime()) / 60000)} minutes ago</small>
+                    <small>
+                        {this.renderTimestamp(message.timestamp)}
+                    </small>
                 </p>
             </li>
         ))
+    }
+
+    scrollToBottom = () => {
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
     }
 
     render() {
@@ -93,14 +118,13 @@ class chat extends Component {
             <div id="frame">
                 <div id="sidepanel">
                     <div id="profile">
-                        <div className="wrap">
-                            <Weather city={this.props.city} />
-                        </div>
+                        <h3 id='weather_header'>Current Weather</h3>
+                        <Weather city={this.props.city} />
                     </div>
                 </div>
                 <div className="content">
                     <div className="contact-profile">
-                        <p className='indent'>Room: {this.props.city} - {this.props.activity}</p>
+                        <p className='tab'>Room: {this.props.city} - {this.props.activity}</p>
                     </div>
                     <div className="messages">
                         <ul id="chat-log">
@@ -108,6 +132,9 @@ class chat extends Component {
                                 messages &&
                                 this.renderMessages(messages)
                             }
+                            <div style={{ float: "left", clear: "both" }}
+                                ref={(el) => { this.messagesEnd = el; }}>
+                            </div>
                         </ul>
                     </div>
                     <div className="message-input">
