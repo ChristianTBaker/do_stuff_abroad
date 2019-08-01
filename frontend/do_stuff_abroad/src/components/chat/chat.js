@@ -12,7 +12,9 @@ class chat extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            message: ''
+        }
 
         this.waitForSocketConnection(() => {
             WebSocketInstance.addCallbacks(
@@ -111,7 +113,7 @@ class chat extends Component {
                     <div className="message-input">
                         <form onSubmit={this.sendMessageHandler}>
                             <div className="wrap">
-                                <input id="chat-message-input" type="text" placeholder="Write your message..." onChange={this.messageChangeHandler} />
+                                <input value={this.state.message} id="chat-message-input" type="text" placeholder="Write your message..." onChange={this.messageChangeHandler} />
                                 <i className="fa fa-paperclip attachment" aria-hidden="true"></i>
                                 <button id="chat-message-submit" className="submit">
                                     <i className="fa fa-paper-plane" aria-hidden="true"></i>
