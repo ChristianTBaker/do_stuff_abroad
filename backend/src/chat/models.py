@@ -23,3 +23,13 @@ class Message(models.Model):
     def last_30_messages(current_group_name):
         current_group = Group.objects.filter(group_name=current_group_name)
         return Message.objects.filter(group=current_group[0]).all().order_by("-timestamp").all()[:30]
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    activity = models.CharField(max_length=255, default='Welcome')
+    city = models.CharField(max_length=255, default='Welcome')
+    status = models.CharField(max_length=10, default='YOLO')
+
+    def __str__(self):
+        return self.user.username

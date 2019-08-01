@@ -1,6 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
+from .models import Profile
+from django.contrib.auth import get_user_model
+from .serializers import ProfileSerializer
+from rest_framework import viewsets
 import json
 
 
@@ -18,3 +22,9 @@ def room(request, room_name):
             "username": mark_safe(json.dumps(request.user.username)),
         },
     )
+
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    filterset_fields = ['user']

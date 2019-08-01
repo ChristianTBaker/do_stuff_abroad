@@ -1,10 +1,8 @@
 from django.urls import path, re_path
-
-from .views import index, room
+from .views import ProfileViewSet
+from rest_framework.routers import DefaultRouter
 
 app_name = "chat"
-
-urlpatterns = [
-    path("", index, name="index"),
-    re_path(r"^(?P<room_name>[^/]+)/$", room, name="room"),
-]
+router = DefaultRouter()
+router.register(r'', ProfileViewSet, basename='profile')
+urlpatterns = router.urls
