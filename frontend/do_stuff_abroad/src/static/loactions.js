@@ -1,6 +1,6 @@
 export default {
     North_America: {
-        Canada: ['Vancouver', 'Montreal', 'Toronto', 'Quebec City', 'Calagary', 'Ottawa', 'Victoria'],
+        Canada: ['Vancouver', 'Montreal', 'Toronto', 'Quebec City', 'Ottawa', 'Victoria'],
         Mexico: ['Cancun', 'Mexico City', 'Chichen Itza', 'Tijuana', 'Guadalajara'],
         USA: ['Anchorage', 'Chicago', 'Juneau', 'Phoenix', 'Los Angeles', 'San Diego', 'San Francisco', 'Jacksonville', 'Orlando', 'Miami', 'Tampa', 'Denver', 'Honolulu', 'New Orleans', 'Las Vegas', 'New York City', 'Portland', 'Charleston', 'Austin', 'Dallas', 'Seattle', 'DC']
     },
@@ -8,7 +8,7 @@ export default {
         China: ['Beijing', 'Shanghai'],
         Hong_Kong: ['Hong Kong'],
         India: ['Delhi', 'Mumbai'],
-        Japan: ['Kyoto', 'Osaka', 'Saporro', 'Tokyo'],
+        Japan: ['Kyoto', 'Osaka', 'Sapporo', 'Tokyo'],
         Thailand: ['Bangkok', 'Chiang Mai'],
         Philippines: ['Manila'],
         Russia: ['Kazan', 'Moscow', 'Saint Petersburg'],
@@ -22,7 +22,7 @@ export default {
         Germany: ['Berlin', 'Cologne', 'Frankfurt', 'Munich'],
         Ireland: ['Dublin'],
         Italy: ['Florence', 'Milan', 'Rome', 'Venice'],
-        Turkey: ['Instanbul'],
+        Turkey: ['Istanbul'],
         United_Kingdom: ['Belfast', 'Birmingham', 'Glasgow', 'Liverpool', 'London', 'Manchester']
     },
     South_America: {

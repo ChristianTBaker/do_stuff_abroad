@@ -1,14 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Jumbotron, Container } from 'reactstrap'
+import './NavBar.css'
 
 function NavBar(props) {
     return (
-        <nav className='navbar navbar-expand-sm navbar-dark bg-info mb-0 py-0'>
-            <div className='container'>
-                <Link className="navbar-brand" to={'/'}>Do Stuff Abroad</Link>
-            </div>
-        </nav>
-    )
-}
+        <div >
+            <Jumbotron fluid className='jumbotron'>
+                <Container fluid >
+                    <h1 className="display-3">Do Stuff Abroad</h1>
+                    <p className="lead">A place for travelers..... to do stuff.</p>
+                </Container>
+            </Jumbotron>
+        </div>
+    );
+};
 
 export default NavBar;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import locations from '../../static/loactions.js'
 import activities from '../../static/activities.js'
-import { send_city_and_activity } from './../../api/api.js'
 import Chat from './../Chat/Chat.js'
 
 class ChatPicker extends Component {

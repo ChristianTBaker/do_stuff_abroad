@@ -3,8 +3,6 @@ import Nav from './../components/Nav/Nav.js'
 import LoginForm from './../components/LoginForm/LoginForm.js'
 import SignupForm from './../components/SignupForm/SignupForm.js'
 import ChatPicker from './../components/ChatPicker/ChatPicker.js'
-import Profile from './../components/Profile/Profile.js'
-import { jsxOpeningFragment } from '@babel/types';
 
 
 class HomePage extends Component {
@@ -14,7 +12,7 @@ class HomePage extends Component {
             displayed_form: '',
             logged_in: localStorage.getItem('token') ? true : false,
             username: '',
-            id: ''
+            id: '',
         };
     }
 
@@ -86,6 +84,7 @@ class HomePage extends Component {
         });
     };
 
+
     render() {
         let form;
         switch (this.state.displayed_form) {
@@ -111,8 +110,6 @@ class HomePage extends Component {
                         ? `Hello, ${this.state.username}`
                         : 'Please Log In'}
                 </h3>
-                {this.state.username ? <Profile username={this.state.username} user_id={this.state.user_id
-                } /> : null}
                 {this.state.username ? <ChatPicker username={this.state.username} /> : null}
             </div>
         )
